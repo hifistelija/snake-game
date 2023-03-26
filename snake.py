@@ -1,4 +1,5 @@
 from turtle import Turtle
+
 UP = 90
 DOWN = 270
 LEFT = 180
@@ -44,6 +45,13 @@ class Snake:
 
         # Move the head of the snake forward by 20 units in its current direction
         self.head.forward(self.move_distance)
+
+    def reset(self):
+        for seg in self.snake_body:
+            seg.goto(1000, 1000)
+        self.snake_body.clear()
+        self.create_snake()
+        self.head = self.snake_body[0]
 
     def up(self):
         if self.head.heading() != DOWN:
